@@ -1,3 +1,5 @@
+import Globals as g
+
 def union(conjunto1, conjunto2):
     # Crear un nuevo conjunto para almacenar la unión
     union = set(conjunto1)  # Copiar el primer conjunto
@@ -61,3 +63,35 @@ def complemento(conjunto, conjunto_universal):
             complemento.add(elemento)
     
     return complemento
+
+def ver_conjuntos():
+    #Muestra todos los conjuntos creados y sus elementos.
+    if not g.conjuntos:
+        print("No hay conjuntos disponibles.")
+    else:
+        print("\nConjuntos almacenados:")
+        for identificador, conjunto in g.conjuntos.items():
+            print(f"{identificador}: {conjunto}")
+
+
+def validar_elementos(elementos):
+    #Valida que todos los elementos sean letras (A-Z) o dígitos (0-9).
+    return all(el.isalnum() and len(el) == 1 and (el.isalpha() or el.isdigit()) for el in elementos)
+
+def construir_conjunto():
+    #Permite al usuario construir un nuevo conjunto con un identificador único y elementos válidos.
+    identificador = input("Ingrese un identificador para el conjunto (una palabra o letra): ").strip()
+    
+    if identificador in g.conjuntos:
+        print(f"Error: Ya existe un conjunto con el identificador '{identificador}'.")
+        return
+    
+    elementos = input("Ingrese los elementos del conjunto (letras A-Z y dígitos 0-9) separados por espacio: ").split()
+    
+    if not validar_elementos(elementos):
+        print("Error: Todos los elementos deben ser letras (A-Z) o dígitos (0-9).")
+        return
+    
+    conjunto = set(elementos)
+    g.conjuntos[identificador] = conjunto
+    print(f"Conjunto '{identificador}' creado: {conjunto}")
