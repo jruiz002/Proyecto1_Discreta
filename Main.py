@@ -1,3 +1,11 @@
+# José Gerardo Ruiz García - 23719
+# Gerardo André Fernández Cruz - 23763
+
+# NOTA: Para realizar operaciones compuestas entre conjuntos se deben de usar paréntesis separados 
+# es decir que siempre que se usen paréntesis se debe de poner un espacio, a continuación, 
+# se muestra un ejemplo: ( A ∪ ( B ∩ C ) )
+
+
 # Se importan las funciones definidas en los módulos `Functions` y `Tokenizer`
 import Functions as f
 import Tokenizer as t
